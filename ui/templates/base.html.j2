@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="icon" href="d" type="image/gif" sizes="16x16">
+    <meta charset="utf-8">
+    <title>Consul Demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/"><span style="color:#4997C1">Acknowledge</span><span style="color:white"> & </span><span style="color:#E1213B">Hashicorp</span> <span style="color:white">-</span> <span style="color:#DD60B1">Consul Demo Portal</span></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% if json %}
+        <div class="api_error">
+          <h1>Our products</h1></br>
+            <table class="table table-dark table-hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Vendor</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              {% for product in json %}
+                <tbody>
+                  <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.vendor }}</td>
+                    <td>{{ product.description }}</td>
+                  </tr>
+                </tbody>
+              {% endfor %}
+            </table>
+        </div>
+      {% else %}
+        <h1>Oops ! The API is not responding !</h1>
+      {% endif %}
+    </div>
+  </body>
+</html>
