@@ -4,10 +4,9 @@ import requests
 import os
 
 def index(request):
-    # View code here...
     tmpl = loader.get_template('base.html.j2')
     try:
-      upstream_url = "http://" + os.environ['UPSTREAM_ADDR'] + ":" + os.environ['UPSTREAM_PORT']
+      upstream_url = "http://api-product.us-east-1.consul:21500"
       r = requests.get(upstream_url, timeout=5)
     except requests.exceptions.RequestException as e:
       data = { 'json': [] }
