@@ -6,7 +6,7 @@ import os
 def index(request):
     tmpl = loader.get_template('base.html.j2')
     try:
-      upstream_url = "http://api-product.us-east-1.consul:21500"
+      upstream_url = "http://localhost:21500"
       r = requests.get(upstream_url, timeout=5)
     except requests.exceptions.RequestException as e:
       data = { 'json': [] }
